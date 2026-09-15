@@ -6,12 +6,8 @@ let rainVolume = 0.42;
 let audioContext;
 let musicGain;
 let musicTimer;
-<<<<<<< HEAD
-let focusSeconds = 25 * 60;
-=======
 let focusDuration = 25 * 60;
 let focusSeconds = focusDuration;
->>>>>>> 00b3777 (Mise a jour temps de concentration, ajout d'un mode "zen" avec paysage et musique douce, refonte de l'interface pour plus de simplicité et de calme.)
 let focusInterval;
 let idleTimer;
 const quotes = [
@@ -59,15 +55,10 @@ document.getElementById('world').addEventListener('click', event => { if (event.
 document.getElementById('focusButton').addEventListener('click', () => { document.getElementById('focusOverlay').classList.add('visible'); document.getElementById('focusOverlay').setAttribute('aria-hidden', 'false'); });
 document.getElementById('closeFocus').addEventListener('click', () => { document.getElementById('focusOverlay').classList.remove('visible'); document.getElementById('focusOverlay').setAttribute('aria-hidden', 'true'); });
 function updateTimer() { document.getElementById('focusTimer').textContent = `${String(Math.floor(focusSeconds / 60)).padStart(2, '0')}:${String(focusSeconds % 60).padStart(2, '0')}`; }
-<<<<<<< HEAD
-document.getElementById('focusStart').addEventListener('click', event => { if (focusInterval) { clearInterval(focusInterval); focusInterval = null; event.currentTarget.textContent = 'Démarrer'; return; } event.currentTarget.textContent = 'Pause'; focusInterval = setInterval(() => { focusSeconds = Math.max(0, focusSeconds - 1); updateTimer(); if (!focusSeconds) { clearInterval(focusInterval); focusInterval = null; showToast('Pause terminée'); } }, 1000); });
-document.getElementById('focusReset').addEventListener('click', () => { clearInterval(focusInterval); focusInterval = null; focusSeconds = 25 * 60; updateTimer(); document.getElementById('focusStart').textContent = 'Démarrer'; });
-=======
 function resetFocusTimer() { clearInterval(focusInterval); focusInterval = null; focusSeconds = focusDuration; updateTimer(); document.getElementById('focusStart').textContent = 'Démarrer'; }
 document.getElementById('focusDuration').addEventListener('change', event => { focusDuration = Number(event.target.value) * 60; resetFocusTimer(); document.getElementById('focusDurationLabel').textContent = `${event.target.value} min`; });
 document.getElementById('focusStart').addEventListener('click', event => { if (focusInterval) { clearInterval(focusInterval); focusInterval = null; event.currentTarget.textContent = 'Démarrer'; return; } event.currentTarget.textContent = 'Pause'; focusInterval = setInterval(() => { focusSeconds = Math.max(0, focusSeconds - 1); updateTimer(); if (!focusSeconds) { clearInterval(focusInterval); focusInterval = null; showToast('Pause terminée'); } }, 1000); });
 document.getElementById('focusReset').addEventListener('click', resetFocusTimer);
->>>>>>> 00b3777 (Mise a jour temps de concentration, ajout d'un mode "zen" avec paysage et musique douce, refonte de l'interface pour plus de simplicité et de calme.)
 const selectedQuote = quotes[Math.floor(Math.random() * quotes.length)];
 document.getElementById('quoteText').innerHTML = `${selectedQuote[0]}<br><em>${selectedQuote[1]}</em>`;
 window.addEventListener('resize', resizeScene); resizeScene(); drawScene();
