@@ -9,7 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
   <style>@media (min-width: 681px){.greeting{margin-top:5vh;max-width:700px}}.topbar,.greeting,.scene-note,.controls{transition:opacity 2.2s ease,transform 2.2s ease}.world.sleeping .topbar,.world.sleeping .greeting,.world.sleeping .scene-note{opacity:0;pointer-events:none}.world.sleeping .controls{opacity:0;pointer-events:auto;transform:translate(-50%,10px)}.world.sleeping{cursor:pointer}</style>
+=======
+  <style>@media (min-width: 681px){.greeting{margin-top:5vh;max-width:700px}}.topbar,.greeting,.scene-note,.controls{transition:opacity 2.2s ease,transform 2.2s ease}.world.sleeping .topbar,.world.sleeping .greeting,.world.sleeping .scene-note{opacity:0;pointer-events:none}.world.sleeping .controls{opacity:0;pointer-events:auto;transform:translate(-50%,10px)}.world.sleeping{cursor:pointer}.focus-duration{display:flex;align-items:center;gap:10px;color:#b9cdb8;font:11px var(--mono);letter-spacing:.05em;margin-top:-2px}.focus-duration select{border:1px solid var(--line);border-radius:5px;padding:8px 28px 8px 10px;background:rgba(19,43,53,.8);color:var(--cream);font:12px var(--mono);cursor:pointer}.focus-duration select:focus{outline:2px solid var(--accent);outline-offset:2px}</style>
+>>>>>>> 00b3777 (Mise a jour temps de concentration, ajout d'un mode "zen" avec paysage et musique douce, refonte de l'interface pour plus de simplicité et de calme.)
 </head>
 <body>
   <main class="world" id="world">
@@ -28,9 +32,15 @@
     <footer class="controls" aria-label="Contrôles de l'ambiance">
       <div class="now-playing"><span class="cassette">♪</span><div><strong id="trackName">Une nuit dans les bois</strong><small>musique originale · calme</small></div></div>
       <div class="player-controls"><button class="control-button" id="rainToggle" title="Mettre la pluie en pause" aria-label="Mettre la pluie en pause">≋</button><button class="play-button" id="playButton" title="Lancer la musique" aria-label="Lancer la musique">▶</button><label class="volume-control" title="Volume de la pluie"><span>☔</span><input id="rainVolume" type="range" min="0" max="100" value="42" aria-label="Volume de la pluie"></label></div>
+<<<<<<< HEAD
       <button class="focus-button" id="focusButton"><span>◌</span> 25 min de calme</button>
     </footer>
     <section class="focus-overlay" id="focusOverlay" aria-hidden="true"><button class="close-focus" id="closeFocus" aria-label="Fermer">×</button><div class="focus-inner"><span class="eyebrow">PETITE PAUSE</span><strong id="focusTimer">25:00</strong><span>Une seule respiration à la fois.</span><div><button class="focus-control" id="focusStart">Démarrer</button><button class="focus-control ghost" id="focusReset">Réinitialiser</button></div></div></section>
+=======
+      <button class="focus-button" id="focusButton"><span>◌</span> <span id="focusDurationLabel">25 min</span> de calme</button>
+    </footer>
+    <section class="focus-overlay" id="focusOverlay" aria-hidden="true"><button class="close-focus" id="closeFocus" aria-label="Fermer">×</button><div class="focus-inner"><span class="eyebrow">PETITE PAUSE</span><strong id="focusTimer">25:00</strong><label class="focus-duration">Durée <select id="focusDuration" aria-label="Durée du focus"><option value="5">5 min</option><option value="10">10 min</option><option value="15">15 min</option><option value="25" selected>25 min</option><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label><span>Une seule respiration à la fois.</span><div><button class="focus-control" id="focusStart">Démarrer</button><button class="focus-control ghost" id="focusReset">Réinitialiser</button></div></div></section>
+>>>>>>> 00b3777 (Mise a jour temps de concentration, ajout d'un mode "zen" avec paysage et musique douce, refonte de l'interface pour plus de simplicité et de calme.)
     <div class="toast" id="toast" role="status"></div>
   </main>
   <script src="app.js"></script>
