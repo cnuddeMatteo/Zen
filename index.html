@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10272b">
+  <title>Pluie — espace de travail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell" data-layout="full">
+    <canvas id="rainCanvas" aria-hidden="true"></canvas>
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">≈</span><span>pluie</span></div>
+      <div class="sidebar-label">TON ESPACE</div>
+      <nav class="nav-list" aria-label="Navigation principale">
+        <button class="nav-item active" data-view="today"><span class="nav-icon">○</span> Aujourd’hui <span class="count">4</span></button>
+        <button class="nav-item" data-view="inbox"><span class="nav-icon">□</span> À traiter <span class="count muted">2</span></button>
+        <button class="nav-item" data-view="done"><span class="nav-icon">✓</span> Terminé</button>
+      </nav>
+      <div class="sidebar-label project-label">PROJETS <button class="add-project" aria-label="Ajouter un projet">+</button></div>
+      <div class="project-list">
+        <button class="project-item"><i class="project-dot mint"></i> Lancement site</button>
+        <button class="project-item"><i class="project-dot amber"></i> Personnel</button>
+        <button class="project-item"><i class="project-dot coral"></i> Idées libres</button>
+      </div>
+      <div class="sidebar-bottom">
+        <button class="subtle-button" id="focusButton"><span>◌</span> Mode concentration</button>
+        <button class="subtle-button" id="settingsButton"><span>⚙</span> Préférences</button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="breadcrumb"><span class="eyebrow">MARDI 15 SEPTEMBRE</span><span class="slash">/</span><strong>AUJOURD’HUI</strong></div>
+        <div class="top-actions">
+          <button class="icon-button" id="layoutButton" title="Changer le format d’affichage" aria-label="Changer le format d’affichage">▣</button>
+          <button class="icon-button" id="moduleButton" title="Personnaliser les modules" aria-label="Personnaliser les modules">☷</button>
+          <button class="icon-button" id="soundButton" title="Activer ou couper l’ambiance" aria-label="Activer ou couper l’ambiance">◒</button>
+          <div class="avatar">M</div>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="welcome-row">
+          <div><p class="kicker">BON RETOUR, MATTEO</p><h1>Un peu de calme,<br><em>puis une chose à la fois.</em></h1></div>
+          <div class="date-card"><span class="date-number">15</span><span>SEPT.<br><small>2026</small></span></div>
+        </div>
+
+        <div class="ambient-bar" data-module="ambient">
+          <div class="ambient-copy"><span class="live-dot"></span><span>Il pleut doucement</span><span class="ambient-note">pluie légère · 42%</span></div>
+          <div class="ambient-controls"><button class="mini-icon" id="rainToggle" title="Activer ou couper la pluie">Ⅱ</button><input id="rainVolume" type="range" min="0" max="100" value="42" aria-label="Volume de la pluie"><button class="mini-icon" id="muteRain" title="Couper la pluie">⌁</button></div>
+        </div>
+
+        <div class="module-settings" id="moduleSettings" aria-hidden="true"><span>MODULES VISIBLES</span><label><input type="checkbox" data-module-toggle="ambient" checked> ambiance</label><label><input type="checkbox" data-module-toggle="tasks" checked> tâches</label><label><input type="checkbox" data-module-toggle="player" checked> lecteur</label></div>
+        <div class="task-area" data-module="tasks">
+          <div class="task-header"><div><h2>À faire aujourd’hui</h2><p><span id="taskCount">3</span> choses prévues · prends ton temps</p></div><button class="primary-button" id="addTask"><span>+</span> Nouvelle tâche</button></div>
+          <div class="task-list" id="taskList">
+          <article class="task-item priority"><button class="check-button" aria-label="Marquer comme terminé"></button><div class="task-main"><strong>Préparer la structure de la page d’accueil</strong><span><i class="project-dot mint"></i> Lancement site <b>·</b> aujourd’hui</span></div><span class="task-time">09:30</span><button class="more-button" aria-label="Plus d’options">•••</button></article>
+          <article class="task-item"><button class="check-button" aria-label="Marquer comme terminé"></button><div class="task-main"><strong>Répondre aux trois messages en attente</strong><span><i class="project-dot coral"></i> Idées libres <b>·</b> aujourd’hui</span></div><span class="task-time">11:00</span><button class="more-button" aria-label="Plus d’options">•••</button></article>
+          <article class="task-item"><button class="check-button" aria-label="Marquer comme terminé"></button><div class="task-main"><strong>Faire une vraie pause déjeuner</strong><span><i class="project-dot amber"></i> Personnel <b>·</b> aujourd’hui</span></div><span class="task-time">12:30</span><button class="more-button" aria-label="Plus d’options">•••</button></article>
+          </div>
+          <button class="completed-row" id="completedRow"><span>✓</span> 2 tâches terminées <small>voir</small></button>
+        </div>
+      </section>
+
+        <iframe class="youtube-frame" id="youtubeFrame" title="Lecteur YouTube" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <footer class="player" data-module="player">
+        <div class="now-playing"><div class="album-art"><span>≈</span></div><div><strong id="trackName">Rain on window</strong><span id="trackMeta">Ambiances · 01:42:08</span></div></div>
+        <div class="player-center"><div class="player-controls"><button class="player-button" id="prevTrack">↶</button><button class="play-button" id="playButton" aria-label="Lecture">▶</button><button class="player-button" id="nextTrack">↷</button></div><div class="progress"><span></span></div></div>
+        <div class="media-search"><div class="media-input"><span>⌕</span><input id="mediaQuery" type="search" autocomplete="off" placeholder="Chercher une ambiance ou coller un lien YouTube" aria-label="Chercher une ambiance ou coller un lien YouTube"><button id="mediaSearchButton" aria-label="Rechercher">↵</button></div><div class="suggestions" id="suggestions" role="listbox"></div></div>
+        <div class="player-right"><span class="player-time">14:28 / 1:42:08</span><label class="upload-button" title="Charger un fichier audio">＋ <input id="audioUpload" type="file" accept="audio/*"> charger un son</label></div>
+      </footer>
+    </main>
+
+    <section class="focus-overlay" id="focusOverlay" aria-hidden="true"><button id="closeFocus" class="close-focus">×</button><div class="focus-inner"><span class="focus-caption">MODE CONCENTRATION</span><strong id="focusTimer">25:00</strong><span>Une seule chose. Le reste peut attendre.</span><div><button class="focus-control" id="focusStart">Démarrer</button><button class="focus-control ghost" id="focusReset">Réinitialiser</button></div></div></section>
+    <div class="toast" id="toast" role="status"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
